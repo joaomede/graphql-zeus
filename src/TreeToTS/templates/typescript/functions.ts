@@ -162,7 +162,7 @@ const buildQuery = (type: string, a?: Record<any, any>) => traverseToSeekArrays(
 const inspectVariables = (query: string) => {
   const regex = /\\\$\\b\\w*ZEUS_VAR\\w*\\b[!]?/g;
   let result;
-  const AllVariables = [];
+  const AllVariables = [] as any;
   while ((result = regex.exec(query))) {
     AllVariables.push(result[0]);
   }
