@@ -23,7 +23,7 @@ const apiFetch = (options: fetchOptions) => (query: string, variables: Record<st
         .then(handleFetchResponse)
         .then((response: GraphQLResponse) => {
           if (response.errors) {
-            throw new Error(response);
+            throw new Error(response.errors[0].message);
           }
           seekForAliases(response.data);
           return response.data;
@@ -40,7 +40,7 @@ const apiFetch = (options: fetchOptions) => (query: string, variables: Record<st
       .then(handleFetchResponse)
       .then((response: GraphQLResponse) => {
         if (response.errors) {
-          throw new Error(response);
+					throw new Error(response.errors[0].message);
         }
         seekForAliases(response.data);
         return response.data;
